@@ -24,7 +24,8 @@ lazy val commonSettings = Seq(
   organization := "io.doriordan",
   scalaVersion := "2.11.8",
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
-  publishMavenStyle := false,
+  publishMavenStyle := true,
+  version := "0.0.2",
   bintrayRepository := "skuber"
 )
 
@@ -49,12 +50,10 @@ lazy val root = (project in file(".")) aggregate(
   examples)
 
 lazy val skuber= (project in file("client"))
-  .enablePlugins(GitVersioning)
   .settings(commonSettings: _*)
   .settings(skuberSettings: _*)
 
 lazy val examples = (project in file("examples"))
-  .enablePlugins(GitVersioning)
   .settings(commonSettings: _*)
   .settings(examplesSettings: _*)
   .settings(examplesAssemblySettings: _*)
